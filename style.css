@@ -1,0 +1,58 @@
+@font-face {
+    font-family: 'SLUG';
+    /* font-style: normal; */
+    /* font-weight: 0 900; */
+    src: url(SLUGVariableVF.ttf) format('truetype');
+}
+
+:root {
+    --bg-color: #283832;
+    --main-color: #CFD1BA;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-color);
+}
+
+hr {
+    border-color: var(--main-color);
+}
+
+.t1 {
+    font-family: 'SLUG';
+    font-size: 100pt;
+    line-height: .7333;
+    font-size: 0;
+    /* font-variation-settings: 'wght' 200; */
+    display: inline-block;
+}
+
+.t1 span {
+    font-size: 200pt;
+    color: var(--main-color);
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 200px;
+    flex-flow: column;
+}
+
+.input-group:not(.input-group:last-child) {
+    margin-bottom: 20px;
+}
+
+.thumbnail-grid {
+    padding: 100px 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+}
+
+.thumbnail {
+    /* max-width: 200px; */
+    width: 100%;
+}
