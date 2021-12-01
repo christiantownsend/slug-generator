@@ -6,8 +6,13 @@
 }
 
 :root {
-    --bg-color: #283832;
-    --main-color: #CFD1BA;
+    /* --bg-color: #283832;
+    --main-color: #CFD1BA; */
+    --bg-color: #000;
+    --main-color: #fff;
+    --hightlight: #E9F411;
+
+    --horizontal-padding: 8%;
 }
 
 body {
@@ -26,6 +31,7 @@ hr {
     font-size: 0;
     /* font-variation-settings: 'wght' 200; */
     display: inline-block;
+    white-space: nowrap;
 }
 
 .t1 span {
@@ -37,16 +43,39 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 200px;
+    padding: 0 var(--horizontal-padding);
     flex-flow: column;
 }
 
+#controls {
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#preview {
+    min-height: 60vh;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.input-group {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group button:not(.input-group button:last-child) {
+    margin-right: 40px;
+}
+
 .input-group:not(.input-group:last-child) {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 }
 
 .thumbnail-grid {
-    padding: 100px 200px;
+    padding: 40px var(--horizontal-padding);
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 30px;
@@ -55,4 +84,197 @@ hr {
 .thumbnail {
     /* max-width: 200px; */
     width: 100%;
+}
+
+button {
+    border: none;
+    color: var(--bg-color);
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: var(--hightlight);
+    cursor: pointer;
+}
+
+button.color-selector {
+    position: relative;
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    border: 2px solid var(--hightlight);
+    margin: 0;
+    padding: 0;
+}
+
+button.color-selector::after {
+    position: absolute;
+    content: '';
+    display: block;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    border-radius: 0 20px 20px 0;
+    background-color: white;
+}
+
+#inverted {
+    background-color: white;
+}
+#inverted::after {
+    background-color: black;
+}
+
+#original {
+    background-color: #283832;
+}
+#original::after {
+    background-color: #CFD1BA;
+}
+#original-inverted {
+    background-color: #CFD1BA;
+}
+#original-inverted::after {
+    background-color: #283832;
+}
+
+#frambuesa {
+    background-color: #C23A32;
+}
+#frambuesa::after {
+    background-color: #F5DDDC;
+}
+#frambuesa-inverted {
+    background-color: #F5DDDC;
+}
+#frambuesa-inverted::after {
+    background-color: #C23A32;
+}
+
+#flores {
+    background-color: #317F82;
+}
+#flores::after {
+    background-color: #D9DCDE;
+}
+#flores-inverted {
+    background-color: #D9DCDE;
+}
+#flores-inverted::after {
+    background-color: #317F82;
+}
+
+#jengibre {
+    background-color: #AD8500;
+}
+#jengibre::after {
+    background-color: #E5D5C8;
+}
+#jengibre-inverted {
+    background-color: #E5D5C8;
+}
+#jengibre-inverted::after {
+    background-color: #AD8500;
+}
+
+/* ------ INPUT ------ */
+
+input[type=range] {
+    -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+    width: 100%; /* Specific width is required for Firefox. */
+    background: transparent; /* Otherwise white in Chrome */
+    margin-bottom: 10px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+-webkit-appearance: none;
+}
+
+input[type=range]:focus {
+outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+width: 100%;
+cursor: pointer;
+
+/* Hides the slider so custom styles can be added */
+background: transparent; 
+border-color: transparent;
+color: transparent;
+}
+
+/* --- */
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    /* border: 4px solid var(--bg-color); */
+    background: var(--hightlight);
+    cursor: pointer;
+    margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+/* --- */
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: var(--main-color);
+    border-radius: 4px;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: var(--main-color);
+    border-radius: 4px;
+}
+
+input[type=range]::-ms-track {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: var(--main-color);
+    border-radius: 4px;
+}
+input[type=range]::-ms-fill-upper {
+    width: 100%;
+    height: 6px;
+    cursor: pointer;
+    background: var(--main-color);
+    border-radius: 4px;
 }

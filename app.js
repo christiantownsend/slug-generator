@@ -55,6 +55,12 @@ var app = new Vue({
         club: [25, 25, 25, 25]
     },
     methods: {
+        setColors: function(main, bg) {
+            var r = document.querySelector(':root');
+
+            r.style.setProperty('--main-color', main);
+            r.style.setProperty('--bg-color', bg);
+        },
         randomizeWeights: function() {
 
             var randomWeight = [];
