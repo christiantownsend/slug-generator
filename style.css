@@ -8,11 +8,21 @@
 :root {
     /* --bg-color: #283832;
     --main-color: #CFD1BA; */
-    --bg-color: #000;
-    --main-color: #fff;
+
+    --dark-color: #000;
+    --light-color: #fff;
+
+    --bg-color: var(--dark-color);
+    --main-color: var(--light-color);
+
     --hightlight: #E9F411;
 
     --horizontal-padding: 8%;
+}
+
+html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -88,7 +98,7 @@ hr {
 
 button {
     border: none;
-    color: var(--bg-color);
+    color: var(--dark-color);
     font-weight: bold;
     padding: 10px 20px;
     border-radius: 20px;

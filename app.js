@@ -55,11 +55,20 @@ var app = new Vue({
         club: [25, 25, 25, 25]
     },
     methods: {
-        setColors: function(main, bg) {
+        setColors: function(dark, light, inverted) {
             var r = document.querySelector(':root');
 
-            r.style.setProperty('--main-color', main);
-            r.style.setProperty('--bg-color', bg);
+            r.style.setProperty('--dark-color', dark);
+            r.style.setProperty('--light-color', light);
+
+            if (inverted) {
+                r.style.setProperty('--main-color', 'var(--dark-color)');
+                r.style.setProperty('--bg-color', 'var(--light-color)');
+            }
+            else {
+                r.style.setProperty('--main-color', 'var(--light-color)');
+                r.style.setProperty('--bg-color', 'var(--dark-color)');
+            }
         },
         randomizeWeights: function() {
 

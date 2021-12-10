@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Slug Club Wordmark Generator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
         <div id="controls" class="section">
             <div class="input-group">
-                <button class="color-selector" @click="setColors('#fff', '#000')"></button>
-                <button class="color-selector" id="inverted" @click="setColors('#000', '#fff')"></button>
+                <button class="color-selector" @click="setColors('#000', '#fff')"></button>
+                <button class="color-selector" id="inverted" @click="setColors('#000', '#fff', true)"></button>
                 <button class="color-selector" id="original" @click="setColors('#283832', '#CFD1BA')"></button>
-                <button class="color-selector" id="original-inverted" @click="setColors('#CFD1BA', '#283832')"></button>
+                <button class="color-selector" id="original-inverted" @click="setColors('#283832', '#CFD1BA', true)"></button>
                 <button class="color-selector" id="frambuesa" @click="setColors('#C23A32', '#F5DDDC')"></button>
-                <button class="color-selector" id="frambuesa-inverted" @click="setColors('#F5DDDC', '#C23A32')"></button>
+                <button class="color-selector" id="frambuesa-inverted" @click="setColors('#C23A32', '#F5DDDC', true)"></button>
                 <button class="color-selector" id="flores" @click="setColors('#317F82', '#D9DCDE')"></button>
-                <button class="color-selector" id="flores-inverted" @click="setColors('#D9DCDE', '#317F82')"></button>
+                <button class="color-selector" id="flores-inverted" @click="setColors('#317F82', '#D9DCDE', true)"></button>
                 <button class="color-selector" id="jengibre" @click="setColors('#AD8500', '#E5D5C8')"></button>
-                <button class="color-selector" id="jengibre-inverted" @click="setColors('#E5D5C8', '#AD8500')"></button>
+                <button class="color-selector" id="jengibre-inverted" @click="setColors('#AD8500', '#E5D5C8', true)"></button>
             </div>
             <sliders class="input-group" v-model="slug"></sliders>
             <sliders class="input-group" v-model="club"></sliders>
