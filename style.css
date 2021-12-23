@@ -20,14 +20,83 @@
     --horizontal-padding: 8%;
 }
 
-html {
+html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
 }
 
 body {
     margin: 0;
     background-color: var(--bg-color);
+}
+
+#app {
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-bar {
+    /* width: 100px; */
+    padding: 40px;
+    border-right: 1px solid var(--main-color);
+    height: 100%;
+}
+
+.middle {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.thumbnail-grid {
+    /* padding: 40px var(--horizontal-padding);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px; */
+    padding: 30px;
+    width: 20%;
+    height: 100%;
+    overflow-y: scroll;
+    border-left: 1px solid var(--main-color);
+}
+
+.thumbnail {
+    /* max-width: 200px; */
+    width: 100%;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column;
+    padding: 40px;
+}
+
+#top-controls {
+    border-bottom: 1px solid var(--main-color);
+}
+
+#bottom-controls {
+    border-top: 1px solid var(--main-color);
+}
+
+#preview {
+    /* min-height: 60vh;
+    padding-top: 40px;
+    padding-bottom: 40px; */
+    flex-grow: 1;
 }
 
 hr {
@@ -49,7 +118,7 @@ hr {
     color: var(--main-color);
 }
 
-.section {
+/* .section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,13 +129,7 @@ hr {
 #controls {
     padding-top: 40px;
     padding-bottom: 40px;
-}
-
-#preview {
-    min-height: 60vh;
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
+} */
 
 .input-group {
     width: 100%;
@@ -82,18 +145,6 @@ hr {
 
 .input-group:not(.input-group:last-child) {
     margin-bottom: 40px;
-}
-
-.thumbnail-grid {
-    padding: 40px var(--horizontal-padding);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
-}
-
-.thumbnail {
-    /* max-width: 200px; */
-    width: 100%;
 }
 
 button {
@@ -115,6 +166,7 @@ button.color-selector {
     border: 2px solid var(--hightlight);
     margin: 0;
     padding: 0;
+    margin-bottom: 40px;
 }
 
 button.color-selector::after {

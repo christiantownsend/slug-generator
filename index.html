@@ -9,46 +9,51 @@
 </head>
 <body>
     <div id="app">
-        <div id="controls" class="section">
-            <div class="input-group">
-                <button class="color-selector" @click="setColors('#000', '#fff')"></button>
-                <button class="color-selector" id="inverted" @click="setColors('#000', '#fff', true)"></button>
-                <button class="color-selector" id="original" @click="setColors('#283832', '#CFD1BA')"></button>
-                <button class="color-selector" id="original-inverted" @click="setColors('#283832', '#CFD1BA', true)"></button>
-                <button class="color-selector" id="frambuesa" @click="setColors('#C23A32', '#F5DDDC')"></button>
-                <button class="color-selector" id="frambuesa-inverted" @click="setColors('#C23A32', '#F5DDDC', true)"></button>
-                <button class="color-selector" id="flores" @click="setColors('#317F82', '#D9DCDE')"></button>
-                <button class="color-selector" id="flores-inverted" @click="setColors('#317F82', '#D9DCDE', true)"></button>
-                <button class="color-selector" id="jengibre" @click="setColors('#AD8500', '#E5D5C8')"></button>
-                <button class="color-selector" id="jengibre-inverted" @click="setColors('#AD8500', '#E5D5C8', true)"></button>
+        <div class="left-bar"> 
+            <button class="color-selector" @click="setColors('#000', '#fff')"></button>
+            <button class="color-selector" id="inverted" @click="setColors('#000', '#fff', true)"></button>
+            <button class="color-selector" id="original" @click="setColors('#283832', '#CFD1BA')"></button>
+            <button class="color-selector" id="original-inverted" @click="setColors('#283832', '#CFD1BA', true)"></button>
+            <button class="color-selector" id="frambuesa" @click="setColors('#C23A32', '#F5DDDC')"></button>
+            <button class="color-selector" id="frambuesa-inverted" @click="setColors('#C23A32', '#F5DDDC', true)"></button>
+            <button class="color-selector" id="flores" @click="setColors('#317F82', '#D9DCDE')"></button>
+            <button class="color-selector" id="flores-inverted" @click="setColors('#317F82', '#D9DCDE', true)"></button>
+            <button class="color-selector" id="jengibre" @click="setColors('#AD8500', '#E5D5C8')"></button>
+            <button class="color-selector" id="jengibre-inverted" @click="setColors('#AD8500', '#E5D5C8', true)"></button>
+        </div>
+
+        <div class="middle">
+            <div id="top-controls" class="section">
+                <sliders class="input-group" v-model="slug"></sliders>
+                <sliders class="input-group" v-model="club"></sliders>
             </div>
-            <sliders class="input-group" v-model="slug"></sliders>
-            <sliders class="input-group" v-model="club"></sliders>
-            <div class="input-group">
-                <button @click="randomizeWeights">Randomize</button>
-                <button @click="genSVG">Save</button>
+            <div id="preview" class="section">
+                <div class="t1 target">
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[0] * 14.4)">S</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[1] * 14.4)">L</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[2] * 14.4)">U</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[3] * 14.4)">G</span>
+                  <br>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[0] * 14.4)">C</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[1] * 14.4)">L</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[2] * 14.4)">U</span>
+                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[3] * 14.4)">B</span>
+                </div>
+            </div>
+            <div id="bottom-controls" class="section">
+                <div class="input-group">
+                    <button @click="randomizeWeights">Randomize</button>
+                    <button @click="genSVG2">Save</button>
+                </div>
             </div>
         </div>
-        <hr>
-        <div id="preview" class="section">
-            <div class="t1 target">
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[0] * 14.4)">S</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[1] * 14.4)">L</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[2] * 14.4)">U</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[3] * 14.4)">G</span>
-              <br>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[0] * 14.4)">C</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[1] * 14.4)">L</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[2] * 14.4)">U</span>
-              <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[3] * 14.4)">B</span>
-            </div>
-        </div>
-        <hr>
+
         <div class="thumbnail-grid">
 
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script type="text/javascript" src="scripts/fontkit.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
