@@ -320,9 +320,17 @@ function generateSVG(widths, color, bgcolor) {
         image.setAttribute("class", "thumbnail");
         image.setAttribute("style", "background-color: " + bgcolor + ";");
         image.setAttribute("src", url);
+        image.setAttribute("alt", "slug-club-wordmark");
+
+        const downloadLink = document.createElement('a');
+        // downloadLink.setAttribute('class', 'thumbnail');
+        downloadLink.setAttribute('href', url);
+        downloadLink.setAttribute('download', 'slug-club-wordmark.svg');
+
+        downloadLink.appendChild(image);
 
         const thumbgrid = document.querySelector(".thumbnail-grid")
-        thumbgrid.appendChild(image);
+        thumbgrid.appendChild(downloadLink);
 
         // return wordmarkSVG;
     });
