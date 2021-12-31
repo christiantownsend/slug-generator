@@ -24,7 +24,7 @@ Vue.component('sliders', {
             /* const sum = 1440; */
             const diff = sum - 100
             let remainder = 0
-            console.log(diff)
+            // console.log(diff)
             for (let i in this.sliders) {
                 if (i != n) { //don't modify the slider which is being dragged
                     let val = this.sliders[i] - diff / (this.sliders.length - 1)
@@ -54,7 +54,25 @@ var app = new Vue({
         color: '#fff',
         bgcolor: '#000',
         slug: [25, 25, 25, 25],
-        club: [25, 25, 25, 25]
+        club: [25, 25, 25, 25],
+        svgDataProcessed: undefined,
+    },
+    computed: {
+        svgData: function() {
+            let slug = this.slug
+            let connector = [' ']
+            let club = this.club
+
+            let weights = slug.concat(connector).concat(club).map(x => x * 14.39);
+            
+            let data;
+
+            const url = generateSVGCode(weights, this.color);
+            url.then((response) => {
+                // console.log(response);
+                this.svgDataProcessed = response;
+            });
+        }
     },
     methods: {
         setColors: function (dark, light, inverted) {
@@ -226,7 +244,7 @@ function generateSVG(widths, color, bgcolor) {
     const fontUrl = "./SLUGVariableVF.ttf";
     const slugString = "SLUG\nCLUB";
 
-    console.log(color);
+    // console.log(color);
 
     fetch(fontUrl).then(res => res.arrayBuffer()).then(ab => {
         const font = fontkit.create(new Buffer(ab));
@@ -246,7 +264,7 @@ function generateSVG(widths, color, bgcolor) {
             wordmarkGlyphs.push(run);
         }
 
-        console.log(wordmarkGlyphs);
+        // console.log(wordmarkGlyphs);
 
 
         let wordmarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
@@ -289,7 +307,7 @@ function generateSVG(widths, color, bgcolor) {
 
             wordmarkGroup.appendChild(glyphPath);
 
-            console.log(glyph.path.toSVG());
+            // console.log(glyph.path.toSVG());
 
             x += pos.xAdvance;
         }
@@ -334,4 +352,104 @@ function generateSVG(widths, color, bgcolor) {
 
         // return wordmarkSVG;
     });
+}
+
+async function generateSVGCode(widths, color) {
+    const fontUrl = "./SLUGVariableVF.ttf";
+    const slugString = "SLUG\nCLUB";
+
+    // console.log(color);
+
+    return fetch(fontUrl).then(res => res.arrayBuffer()).then(ab => {
+        const font = fontkit.create(new Buffer(ab));
+
+        // let fontVariation = font.getVariation({ 'wdth': 1139 });
+
+        wordmarkGlyphs = [];
+
+        for (let i = 0; i < slugString.length; i++) {
+
+            let randomWidth = Math.random() * 1139;
+
+            let fontVariation = font.getVariation({ 'wdth': widths[i] });
+
+            let run = fontVariation.layout(slugString[i]);
+
+            wordmarkGlyphs.push(run);
+        }
+
+        // console.log(wordmarkGlyphs);
+
+
+        let wordmarkSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        wordmarkSVG.setAttribute('height', 300);
+        wordmarkSVG.setAttribute('width', 425);
+
+        let wordmarkGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        wordmarkGroup.setAttribute('transform', 'scale(1 -1)');
+        wordmarkGroup.setAttribute('transform-origin', 'top left');
+
+        wordmarkSVG.appendChild(wordmarkGroup);
+
+        let x = 0;
+        // let y = 0;
+        let y = -1450;
+
+        for (let i = 0; i < wordmarkGlyphs.length; i++) {
+
+            let glyph = wordmarkGlyphs[i].glyphs[0];
+            if (glyph.id == 0) {
+                y -= 1450;
+                // y = 0;
+                x = 0;
+                continue;
+            }
+            let pos = wordmarkGlyphs[i].positions[0];
+
+            let glyphPath = document.createElementNS(
+                'http://www.w3.org/2000/svg',
+                'path'
+            );
+
+            glyphPath.setAttribute('fill', color);
+            glyphPath.setAttribute('transform', 'translate(' + x / 10 + ' ' + y / 10 + '), scale(.1) ');
+            // glyphPath.setAttribute('x', x);
+            glyphPath.setAttribute(
+                'd',
+                glyph.path.toSVG()
+            );
+
+            wordmarkGroup.appendChild(glyphPath);
+
+            // console.log(glyph.path.toSVG());
+
+            x += pos.xAdvance;
+        }
+
+        // wordmarkSVGData = (new XMLSerializer()).serializeToString(wordmarkSVG);
+        // console.log(wordmarkSVG);
+        
+
+        //get svg source.
+        var serializer = new XMLSerializer();
+        var source = serializer.serializeToString(wordmarkSVG);
+
+        //add name spaces.
+        if(!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)){
+            source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+        }
+        if(!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)){
+            source = source.replace(/^<svg/, '<svg xmlns:xlink="http://www.w3.org/1999/xlink"');
+        }
+
+        //add xml declaration
+        source = '<?xml version="1.0" standalone="no"?>\r\n' + source;
+
+        //convert svg source to URI data scheme.
+        data = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(source);
+
+        // console.log(data);
+
+        return data;
+    })
 }

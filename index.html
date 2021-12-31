@@ -30,7 +30,8 @@
                 <sliders class="input-group" v-model="club"></sliders>
             </div>
             <div id="preview" class="section">
-                <div class="t1 target">
+                <img id="preview-wordmark" :src="svgDataProcessed" :data="svgData">
+                <!-- <div class="t1 target">
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[0] * 14.4)">S</span>
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[1] * 14.4)">L</span>
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[2] * 14.4)">U</span>
@@ -40,7 +41,7 @@
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[1] * 14.4)">L</span>
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[2] * 14.4)">U</span>
                   <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[3] * 14.4)">B</span>
-                </div>
+                </div> -->
             </div>
             <div id="bottom-controls" class="section">
                 <div class="input-group">

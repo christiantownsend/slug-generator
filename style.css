@@ -99,6 +99,10 @@ body {
     flex-grow: 1;
 }
 
+#preview-wordmark {
+    width: min(90%, 400px);
+}
+
 hr {
     border-color: var(--main-color);
 }

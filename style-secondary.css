@@ -2,7 +2,8 @@
     font-family: 'SLUG';
     /* font-style: normal; */
     /* font-weight: 0 900; */
-    src: url(SLUGVariableVF.ttf) format('truetype');
+    src:    url(SLUGVariableVF.woff2) format("woff2"),
+            url(SLUGVariableVF.ttf) format('truetype');
 }
 
 :root {
@@ -106,6 +107,10 @@ body {
     padding-bottom: 40px; */
     flex-grow: 1;
     background-color: var(--bg-color);
+}
+
+#preview-wordmark {
+    width: min(90%, 600px);
 }
 
 hr {
