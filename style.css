@@ -97,6 +97,10 @@ body {
     color: var(--fgColor);
 }
 
+.thumbnail:last-child {
+    margin-bottom: 0;
+}
+
 .thumbnail::after {
     position: absolute;
     inset: 0;
