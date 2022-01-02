@@ -28,6 +28,8 @@ html * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     box-sizing: border-box;
+
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -78,12 +80,59 @@ body {
 }
 
 .thumbnail {
+    --bgColor: #000;
+    --fgColor: #fff;
+
+    display: block;
     width: 100%;
-    min-width: 120px;
+    min-width: 200px;
     margin-bottom: var(--main-padding);
     border-radius: 20px;
     padding: 15px;
     border: 1px solid var(--fg-color);
+    position: relative;
+    overflow: hidden;
+
+    background-color: var(--bgColor);
+    color: var(--fgColor);
+}
+
+.thumbnail::after {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    content: 'Download ↓';
+    font-family: inherit;
+    font-size: 12pt;
+    font-weight: 400;
+
+    width: max-content;
+    height: max-content;
+    padding: 1em 2em;
+    border-radius: 10rem;
+    
+    background-color: var(--fgColor);
+    color: var(--bgColor);
+
+    border: 1px solid var(--bgColor);
+
+    transition: all .2s ease-out;
+    transform: translateY(-1rem);
+    opacity: 0;
+}
+
+.thumbnail:hover::after {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.thumbnail img {
+    width: 100%;
+    display: block;
 }
 
 .section {
@@ -144,10 +193,10 @@ button {
     font-size: 12pt;
     border: none;
     /* color: var(--neutral-light); */
-    font-weight: bold;
+    font-weight: 400;
     /* text-transform: uppercase; */
-    letter-spacing: 1px;
-    padding: 15px 25px;
+    /* letter-spacing: 1px; */
+    padding: 1em 2em;
     border-radius: 50px;
     /* background-color: var(--neutral-dark); */
     background-color: var(--fg-color);

@@ -131,14 +131,15 @@ var app = new Vue({
         },
         createThumbnail: function() {
             const image = document.createElement('img');
-            image.setAttribute("class", "thumbnail");
-            image.setAttribute("style", "background-color: " + this.bgcolor + ";");
+            // image.setAttribute("class", "thumbnail");
             image.setAttribute("src", this.currentSVG);
             image.setAttribute("alt", "slug-club-wordmark");
 
             const downloadLink = document.createElement('a');
             // downloadLink.setAttribute('class', 'thumbnail');
             downloadLink.setAttribute('href', this.currentSVG);
+            downloadLink.setAttribute("class", "thumbnail");
+            downloadLink.setAttribute("style", "--bgColor: " + this.bgcolor + "; --fgColor: " + this.color + ";");
             downloadLink.setAttribute('download', 'slug-club-wordmark.svg');
 
             downloadLink.appendChild(image);
@@ -177,13 +178,13 @@ var app = new Vue({
                 wordmarkSVG.appendChild(wordmarkGroup);
         
                 let x = 0;
-                let y = -1450;
+                let y = -1468;
         
                 for (let i = 0; i < wordmarkGlyphs.length; i++) {
         
                     let glyph = wordmarkGlyphs[i].glyphs[0];
                     if (glyph.id == 0) {
-                        y -= 1450;
+                        y -= 1468;
                         // y = 0;
                         x = 0;
                         continue;
