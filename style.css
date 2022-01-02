@@ -2,22 +2,26 @@
     font-family: 'SLUG';
     /* font-style: normal; */
     /* font-weight: 0 900; */
-    src: url(SLUGVariableVF.ttf) format('truetype');
+    src:    url(SLUGVariableVF.woff2) format("woff2"),
+            url(SLUGVariableVF.ttf) format('truetype');
 }
 
 :root {
     /* --bg-color: #283832;
     --main-color: #CFD1BA; */
 
-    --dark-color: #000;
-    --light-color: #fff;
+    --neutral-light: #efefef;
+    --neutral-mid: #cfcfcf;
+    --neutral-dark: #222;
 
-    --bg-color: var(--dark-color);
-    --main-color: var(--light-color);
+    --fg-color: #fff;
+    --bg-color: #000;
 
     --hightlight: #E9F411;
 
     --horizontal-padding: 8%;
+
+    --main-padding: 1.5rem;
 }
 
 html * {
@@ -28,7 +32,7 @@ html * {
 
 body {
     margin: 0;
-    background-color: var(--bg-color);
+    background-color: var(--neutral-light);
 }
 
 #app {
@@ -42,9 +46,13 @@ body {
 
 .left-bar {
     /* width: 100px; */
-    padding: 40px;
-    border-right: 1px solid var(--main-color);
+    padding: var(--main-padding);
     height: 100%;
+    overflow-y: scroll;
+    flex-shrink: 0;
+    background-color: var(--bg-color); 
+    border-right: 1px solid var(--fg-color);
+    /* border-right: 1px solid var(--neutral-dark); */
 }
 
 .middle {
@@ -56,23 +64,26 @@ body {
 }
 
 .thumbnail-grid {
-    /* padding: 40px var(--horizontal-padding);
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px; */
-    padding: 30px;
     width: 20%;
+    max-width: 25rem;
+    padding: var(--main-padding);
     height: 100%;
+    overflow-x: hidden;
     overflow-y: scroll;
-    border-left: 1px solid var(--main-color);
+    /* border-left: 1px solid var(--neutral-dark);
+    background-color: var(--neutral-light); */
+
+    border-left: 1px solid var(--fg-color);
+    background-color: var(--bg-color);
 }
 
 .thumbnail {
-    /* max-width: 200px; */
     width: 100%;
-    margin-bottom: 30px;
+    min-width: 120px;
+    margin-bottom: var(--main-padding);
     border-radius: 20px;
-    padding: 10px;
+    padding: 15px;
+    border: 1px solid var(--fg-color);
 }
 
 .section {
@@ -81,15 +92,20 @@ body {
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    padding: 40px;
+    padding: var(--main-padding);
 }
 
 #top-controls {
-    border-bottom: 1px solid var(--main-color);
+    /* border-bottom: 1px solid var(--neutral-dark); */
+    background-color: var(--bg-color);
+    border-bottom: 1px solid var(--fg-color);
 }
 
 #bottom-controls {
-    border-top: 1px solid var(--main-color);
+    /* border-top: 1px solid var(--neutral-dark); */
+
+    background-color: var(--bg-color);
+    border-top: 1px solid var(--fg-color);
 }
 
 #preview {
@@ -97,43 +113,16 @@ body {
     padding-top: 40px;
     padding-bottom: 40px; */
     flex-grow: 1;
+    background-color: var(--bg-color);
 }
 
 #preview-wordmark {
-    width: min(90%, 400px);
+    width: min(90%, 600px);
 }
 
 hr {
-    border-color: var(--main-color);
+    border-color: var(--neutral-dark);
 }
-
-.t1 {
-    font-family: 'SLUG';
-    font-size: 100pt;
-    line-height: .7333;
-    font-size: 0;
-    /* font-variation-settings: 'wght' 200; */
-    display: inline-block;
-    white-space: nowrap;
-}
-
-.t1 span {
-    font-size: 200pt;
-    color: var(--main-color);
-}
-
-/* .section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 var(--horizontal-padding);
-    flex-flow: column;
-}
-
-#controls {
-    padding-top: 40px;
-    padding-bottom: 40px;
-} */
 
 .input-group {
     width: 100%;
@@ -143,113 +132,61 @@ hr {
     justify-content: center;
 }
 
-.input-group button:not(.input-group button:last-child) {
-    margin-right: 40px;
+.input-group button:not(:last-child) {
+    margin-right: var(--main-padding);
 }
 
 .input-group:not(.input-group:last-child) {
-    margin-bottom: 40px;
+    margin-bottom: var(--main-padding);
 }
 
 button {
+    font-size: 12pt;
     border: none;
-    color: var(--dark-color);
+    /* color: var(--neutral-light); */
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 20px;
-    background-color: var(--hightlight);
+    /* text-transform: uppercase; */
+    letter-spacing: 1px;
+    padding: 15px 25px;
+    border-radius: 50px;
+    /* background-color: var(--neutral-dark); */
+    background-color: var(--fg-color);
+    color: var(--bg-color);
     cursor: pointer;
+    border: 1px solid var(--fg-color);
 }
 
 button.color-selector {
+    --fgColor: black;
+    --bgColor: white;
+
     position: relative;
     display: block;
-    width: 40px;
-    height: 40px;
-    background-color: black;
-    border: 2px solid var(--hightlight);
+    width: 46px;
+    height: 46px;
+    background-color: var(--bgColor);
+    /* border: 2px solid var(--hightlight); */
     margin: 0;
     padding: 0;
-    margin-bottom: 40px;
+    margin-bottom: var(--main-padding);
+}
+
+button.color-selector:last-child {
+    margin-bottom: 0;
 }
 
 button.color-selector::after {
     position: absolute;
     content: '';
     display: block;
-    width: 50%;
-    height: 100%;
-    left: 50%;
-    top: 0;
-    border-radius: 0 20px 20px 0;
-    background-color: white;
+    width: 40%;
+    height: 40%;
+    left: 30%;
+    top: 30%;
+    border-radius: 6px;
+    background-color: var(--fgColor);
 }
 
-#inverted {
-    background-color: white;
-}
-#inverted::after {
-    background-color: black;
-}
-
-#original {
-    background-color: #283832;
-}
-#original::after {
-    background-color: #CFD1BA;
-}
-#original-inverted {
-    background-color: #CFD1BA;
-}
-#original-inverted::after {
-    background-color: #283832;
-}
-
-#frambuesa {
-    background-color: #C23A32;
-}
-#frambuesa::after {
-    background-color: #F5DDDC;
-}
-#frambuesa-inverted {
-    background-color: #F5DDDC;
-}
-#frambuesa-inverted::after {
-    background-color: #C23A32;
-}
-
-#flores {
-    background-color: #317F82;
-}
-#flores::after {
-    background-color: #D9DCDE;
-}
-#flores-inverted {
-    background-color: #D9DCDE;
-}
-#flores-inverted::after {
-    background-color: #317F82;
-}
-
-#jengibre {
-    background-color: #AD8500;
-}
-#jengibre::after {
-    background-color: #E5D5C8;
-}
-#jengibre-inverted {
-    background-color: #E5D5C8;
-}
-#jengibre-inverted::after {
-    background-color: #AD8500;
-}
-
-#highlight {
-    background-color: #283832;
-}
-#highlight::after {
-    background-color: var(--hightlight);
-}
 
 /* ------ INPUT ------ */
 
@@ -287,7 +224,8 @@ input[type=range]::-webkit-slider-thumb {
     width: 14px;
     border-radius: 50%;
     /* border: 4px solid var(--bg-color); */
-    background: var(--hightlight);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     cursor: pointer;
     margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
@@ -298,7 +236,8 @@ input[type=range]::-moz-range-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     cursor: pointer;
 }
 
@@ -308,7 +247,8 @@ input[type=range]::-ms-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     cursor: pointer;
 }
 
@@ -318,14 +258,16 @@ input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     border-radius: 4px;
 }
 input[type=range]::-moz-range-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     border-radius: 4px;
 }
 
@@ -341,13 +283,15 @@ input[type=range]::-ms-fill-lower {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     border-radius: 4px;
 }
 input[type=range]::-ms-fill-upper {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--main-color);
+    /* background: var(--neutral-dark); */
+    background: var(--fg-color);
     border-radius: 4px;
 }

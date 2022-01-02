@@ -5,23 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slug Club Wordmark Generator</title>
-    <link rel="stylesheet" href="style-secondary.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" type="xml/svg" href="favicon.svg">
 </head>
 <body>
     <div id="app">
         <div class="left-bar"> 
-            <button class="color-selector" @click="setColors('#000', '#fff')"></button>
-            <button class="color-selector" id="inverted" @click="setColors('#000', '#fff', true)"></button>
-            <button class="color-selector" id="highlight" @click="setColors('#283832', '#E9F411')"></button>
-            <button class="color-selector" id="original" @click="setColors('#283832', '#CFD1BA')"></button>
-            <button class="color-selector" id="original-inverted" @click="setColors('#283832', '#CFD1BA', true)"></button>
-            <button class="color-selector" id="frambuesa" @click="setColors('#C23A32', '#F5DDDC')"></button>
-            <button class="color-selector" id="frambuesa-inverted" @click="setColors('#C23A32', '#F5DDDC', true)"></button>
-            <button class="color-selector" id="flores" @click="setColors('#317F82', '#D9DCDE')"></button>
-            <button class="color-selector" id="flores-inverted" @click="setColors('#317F82', '#D9DCDE', true)"></button>
-            <button class="color-selector" id="jengibre" @click="setColors('#AD8500', '#E5D5C8')"></button>
-            <button class="color-selector" id="jengibre-inverted" @click="setColors('#AD8500', '#E5D5C8', true)"></button>
+            <color-selector fg="#ffffff" bg="#000000"></color-selector>
+            <color-selector fg="#000000" bg="#ffffff"></color-selector>
+            <color-selector fg="#E9F411" bg="#283832"></color-selector>
+            <color-selector fg="#CFD1BA" bg="#283832"></color-selector>
+            <color-selector fg="#283832" bg="#CFD1BA"></color-selector>
+            <color-selector fg="#F5DDDC" bg="#C23A32"></color-selector>
+            <color-selector fg="#C23A32" bg="#F5DDDC"></color-selector>
+            <color-selector fg="#D9DCDE" bg="#317F82"></color-selector>
+            <color-selector fg="#317F82" bg="#D9DCDE"></color-selector>
+            <color-selector fg="#E5D5C8" bg="#AD8500"></color-selector>
+            <color-selector fg="#AD8500" bg="#E5D5C8"></color-selector>
         </div>
 
         <div class="middle">
@@ -30,23 +30,12 @@
                 <sliders class="input-group" v-model="club"></sliders>
             </div>
             <div id="preview" class="section">
-                <img id="preview-wordmark" :src="svgDataProcessed" :data="svgData">
-                <!-- <div class="t1 target">
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[0] * 14.4)">S</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[1] * 14.4)">L</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[2] * 14.4)">U</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (slug[3] * 14.4)">G</span>
-                  <br>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[0] * 14.4)">C</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[1] * 14.4)">L</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[2] * 14.4)">U</span>
-                  <span v-bind:style="'font-variation-settings: \'wdth\' ' + (club[3] * 14.4)">B</span>
-                </div> -->
+                <img id="preview-wordmark" :src="currentSVG">
             </div>
             <div id="bottom-controls" class="section">
                 <div class="input-group">
                     <button @click="randomizeWeights">Randomize</button>
-                    <button @click="genSVG2">Save</button>
+                    <button @click="createThumbnail">Save</button>
                 </div>
             </div>
         </div>

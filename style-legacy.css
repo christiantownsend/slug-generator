@@ -2,17 +2,12 @@
     font-family: 'SLUG';
     /* font-style: normal; */
     /* font-weight: 0 900; */
-    src:    url(SLUGVariableVF.woff2) format("woff2"),
-            url(SLUGVariableVF.ttf) format('truetype');
+    src: url(SLUGVariableVF.ttf) format('truetype');
 }
 
 :root {
     /* --bg-color: #283832;
     --main-color: #CFD1BA; */
-
-    --neutral-light: #efefef;
-    --neutral-mid: #cfcfcf;
-    --neutral-dark: #222;
 
     --dark-color: #000;
     --light-color: #fff;
@@ -33,7 +28,7 @@ html * {
 
 body {
     margin: 0;
-    background-color: var(--neutral-light);
+    background-color: var(--bg-color);
 }
 
 #app {
@@ -48,11 +43,8 @@ body {
 .left-bar {
     /* width: 100px; */
     padding: 40px;
-    border-right: 1px solid var(--neutral-dark);
+    border-right: 1px solid var(--main-color);
     height: 100%;
-    overflow-y: scroll;
-    flex-shrink: 0;
-    /* background-color: var(--neutral-dark);  */
 }
 
 .middle {
@@ -72,16 +64,15 @@ body {
     width: 20%;
     height: 100%;
     overflow-y: scroll;
-    border-left: 1px solid var(--neutral-dark);
-    background-color: var(--neutral-light);
+    border-left: 1px solid var(--main-color);
 }
 
 .thumbnail {
+    /* max-width: 200px; */
     width: 100%;
-    min-width: 120px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
     border-radius: 20px;
-    padding: 15px;
+    padding: 10px;
 }
 
 .section {
@@ -94,11 +85,11 @@ body {
 }
 
 #top-controls {
-    border-bottom: 1px solid var(--neutral-dark);
+    border-bottom: 1px solid var(--main-color);
 }
 
 #bottom-controls {
-    border-top: 1px solid var(--neutral-dark);
+    border-top: 1px solid var(--main-color);
 }
 
 #preview {
@@ -106,15 +97,14 @@ body {
     padding-top: 40px;
     padding-bottom: 40px; */
     flex-grow: 1;
-    background-color: var(--bg-color);
 }
 
 #preview-wordmark {
-    width: min(90%, 600px);
+    width: min(90%, 400px);
 }
 
 hr {
-    border-color: var(--neutral-dark);
+    border-color: var(--main-color);
 }
 
 .t1 {
@@ -125,10 +115,6 @@ hr {
     /* font-variation-settings: 'wght' 200; */
     display: inline-block;
     white-space: nowrap;
-
-    /* padding: 80px;
-    border-radius: 80px;
-    background-color: var(--bg-color); */
 }
 
 .t1 span {
@@ -166,25 +152,22 @@ hr {
 }
 
 button {
-    font-size: 12pt;
     border: none;
-    color: var(--neutral-light);
+    color: var(--dark-color);
     font-weight: bold;
-    /* text-transform: uppercase; */
-    letter-spacing: 1px;
-    padding: 15px 25px;
-    border-radius: 50px;
-    background-color: var(--neutral-dark);
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: var(--hightlight);
     cursor: pointer;
 }
 
 button.color-selector {
     position: relative;
     display: block;
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     background-color: black;
-    /* border: 2px solid var(--hightlight); */
+    border: 2px solid var(--hightlight);
     margin: 0;
     padding: 0;
     margin-bottom: 40px;
@@ -194,11 +177,11 @@ button.color-selector::after {
     position: absolute;
     content: '';
     display: block;
-    width: 40%;
-    height: 40%;
-    left: 30%;
-    top: 30%;
-    border-radius: 6px;
+    width: 50%;
+    height: 100%;
+    left: 50%;
+    top: 0;
+    border-radius: 0 20px 20px 0;
     background-color: white;
 }
 
@@ -304,7 +287,7 @@ input[type=range]::-webkit-slider-thumb {
     width: 14px;
     border-radius: 50%;
     /* border: 4px solid var(--bg-color); */
-    background: var(--neutral-dark);;
+    background: var(--hightlight);
     cursor: pointer;
     margin-top: -4px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
 }
@@ -315,7 +298,7 @@ input[type=range]::-moz-range-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     cursor: pointer;
 }
 
@@ -325,7 +308,7 @@ input[type=range]::-ms-thumb {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     cursor: pointer;
 }
 
@@ -335,14 +318,14 @@ input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     border-radius: 4px;
 }
 input[type=range]::-moz-range-track {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     border-radius: 4px;
 }
 
@@ -358,13 +341,13 @@ input[type=range]::-ms-fill-lower {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     border-radius: 4px;
 }
 input[type=range]::-ms-fill-upper {
     width: 100%;
     height: 6px;
     cursor: pointer;
-    background: var(--neutral-dark);;
+    background: var(--main-color);
     border-radius: 4px;
 }
