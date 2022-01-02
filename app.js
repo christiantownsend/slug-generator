@@ -63,8 +63,8 @@ Vue.component('color-selector', {
 var app = new Vue({
     el: '#app',
     data: {
-        color: '#fff',
-        bgcolor: '#000',
+        color: '#000',
+        bgcolor: '#fff',
         slug: [25, 25, 25, 25],
         club: [25, 25, 25, 25],
         currentSVG: undefined,
