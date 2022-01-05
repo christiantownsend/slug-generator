@@ -2,8 +2,8 @@
     font-family: 'SLUG';
     /* font-style: normal; */
     /* font-weight: 0 900; */
-    src:    url(SLUGVariableVF.woff2) format("woff2"),
-            url(SLUGVariableVF.ttf) format('truetype');
+    src:    url("static/SLUGVariableVF.woff2") format("woff2"),
+            url("static/SLUGVariableVF.ttf") format('truetype');
 }
 
 :root {
@@ -55,6 +55,10 @@ body {
     background-color: var(--bg-color); 
     border-right: 1px solid var(--fg-color);
     /* border-right: 1px solid var(--neutral-dark); */
+}
+
+.left-bar::-webkit-scrollbar {
+    display: none;
 }
 
 .middle {

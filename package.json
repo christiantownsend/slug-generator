@@ -1,0 +1,14 @@
+{
+  "name": "slug-generator",
+  "version": "1.0.0",
+  "description": "A wordmark generator for Slug Club Kombucha",
+  "main": "main.js",
+  "author": "The Collected Works",
+  "license": "ISC",
+  "scripts": {
+    "start": "electron ."
+  },
+  "devDependencies": {
+    "electron": "^16.0.6"
+  }
+}

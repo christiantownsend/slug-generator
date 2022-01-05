@@ -148,7 +148,7 @@ var app = new Vue({
             thumbgrid.appendChild(downloadLink);
         },
         createSVG: async function(widths, color) {
-            const fontUrl = "./SLUGVariableVF.ttf";
+            const fontUrl = "./static/SLUGVariableVF.ttf";
             const slugString = "SLUG\nCLUB";
         
             return fetch(fontUrl).then(res => res.arrayBuffer()).then(ab => {
