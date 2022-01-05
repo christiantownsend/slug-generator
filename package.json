@@ -18,9 +18,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
     "@electron-forge/maker-zip": "^6.0.0-beta.61",
     "electron": "^16.0.6",
-    "electron-icon-builder": "^2.0.1"
-  },
-  "dependencies": {
+    "electron-icon-builder": "^2.0.1",
     "electron-squirrel-startup": "^1.0.0"
   },
   "config": {
@@ -32,7 +30,10 @@
         {
           "name": "@electron-forge/maker-squirrel",
           "config": {
-            "name": "slug_generator"
+            "name": "SlugGenerator",
+            "setupExe": "SlugGenerator.exe",
+            "setupIcon": "./icons/icon.ico",
+            "skipUpdateIcon": true
           }
         },
         {
